@@ -1,5 +1,4 @@
 'use client'
-// layout.js
 import React, { useState } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
@@ -21,7 +20,7 @@ const items = [
 
 export default function DashboardLayout() {
   const [collapsed, setCollapsed] = useState(false);
-  const [selectedKey, setSelectedKey] = useState('1'); // Default to Projects
+  const [selectedKey, setSelectedKey] = useState('1'); 
 
   const handleMenuClick = ({ key }) => {
     setSelectedKey(key);
