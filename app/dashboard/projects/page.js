@@ -1,3 +1,4 @@
+'use client'
 import { Divider, Table, Button, Tooltip } from "antd";
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
