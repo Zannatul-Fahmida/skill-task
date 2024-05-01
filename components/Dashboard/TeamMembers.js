@@ -9,7 +9,7 @@ const tagInputStyle = {
 };
 const TeamMembers = () => {
   const { token } = theme.useToken();
-  const [tags, setTags] = useState(['Me', 'Minhaz', 'Mithu']);
+  const [tags, setTags] = useState(['Me', 'Loly', 'Tultuli']);
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [editInputIndex, setEditInputIndex] = useState(-1);

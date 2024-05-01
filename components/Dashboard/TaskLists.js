@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Button, List, Skeleton } from 'antd';
+import { Avatar, Button, Input, List, Modal, Skeleton } from 'antd';
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 const TaskLists = () => {
@@ -7,6 +7,18 @@ const TaskLists = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [list, setList] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  const showModal = () => {
+    setOpen(true);
+  };
+  const handleOk = () => {
+    setOpen(false);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
   useEffect(() => {
     fetch(fakeDataUrl)
       .then((res) => res.json())
@@ -59,7 +71,26 @@ const TaskLists = () => {
       dataSource={list}
       renderItem={(item) => (
         <List.Item
-          actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">assign</a>, <a key="list-loadmore-more">delete</a>]}
+          actions={[<a key="list-loadmore-edit">edit</a>, 
+          <a key='list-loadmore-assign'>
+          <Modal
+          open={open}
+          title="Assign Member"
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={(_, { OkBtn, CancelBtn }) => (
+            <>
+              <CancelBtn />
+              <OkBtn />
+            </>
+          )}
+        >
+        <Input />
+        </Modal>
+        <Button className="border-0 text-gray-400 shadow-none" onClick={showModal}>
+          assign
+        </Button>
+          </a>, <a key="list-loadmore-more">delete</a>]}
         >
           <Skeleton avatar title={false} loading={item.loading} active>
             <List.Item.Meta
